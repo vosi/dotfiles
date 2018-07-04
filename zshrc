@@ -8,7 +8,7 @@ export LANG=en_US.UTF-8
 
 export GOPATH=$HOME/go
 
-if [ "$OSTYPE"=~"darwin.*" ]; then
+if [ "$(uname 2> /dev/null)"="Darwin" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   export ANDROID_HOME=~/Library/Android/sdk
   #export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python2.7
@@ -18,7 +18,7 @@ fi
 
 #### Paths
 
-if [ "$OSTYPE"=~"darwin.*" ]; then
+if [ "$(uname 2> /dev/null)"="Darwin" ]; then
   export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH"
   export PATH=$PATH:$GOPATH/bin:$HOME/bin
 
@@ -46,7 +46,9 @@ if brew command command-not-found-init > /dev/null 2>&1; then eval "$(brew comma
 
 #### VariousSettings
 
-ulimit -n 65536 65536
+if [ "$(uname 2> /dev/null)"="Darwin" ]; then
+  ulimit -n 65536 65536
+fi
 
 #### ENDVariousSettings
 
@@ -94,7 +96,7 @@ source $HOME/antigen.zsh
 #### OhMyZshPlugins
 antigen use oh-my-zsh
 
-if [ "$OSTYPE"=~"darwin.*" ]; then
+if [ "$(uname 2> /dev/null)"="Darwin" ]; then
   antigen bundle osx
 fi
 antigen bundles <<EOBUNDLES
