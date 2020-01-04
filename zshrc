@@ -12,6 +12,8 @@ if [ "$(uname 2> /dev/null)"="Darwin" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   export ANDROID_HOME=~/Library/Android/sdk
   #export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python2.7
+  export GDALHOME="/Library/Frameworks/GDAL.framework/Versions/Current/unix/"
+  export LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib" 
 fi
 
 #### ENDEnvVars
@@ -21,12 +23,14 @@ fi
 if [ "$(uname 2> /dev/null)"="Darwin" ]; then
   export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH"
   export PATH=$PATH:$GOPATH/bin:$HOME/bin
+  export PATH="$HOME/.cargo/bin:$PATH"
+  export PATH="/Library/Frameworks/GDAL.framework/Versions/Current/unix/bin:$PATH"
 
   export PATH="/usr/local/opt/gettext/bin:$PATH"
   export PATH="/usr/local/opt/python@2/bin:$PATH"
-  export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
-  export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
-  export PATH="/usr/local/opt/node@6/bin:$PATH"
+  export PATH="/usr/local/opt/postgresql/bin:$PATH"
+  export PATH="/usr/local/opt/mysql/bin:$PATH"
+  export PATH="/usr/local/opt/node@8/bin:$PATH"
   export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 fi
 
@@ -42,12 +46,14 @@ test -e ${HOME}/.auto.home.zsh && source ${HOME}/.auto.home.zsh
 
 if brew command command-not-found-init > /dev/null 2>&1; then eval "$(brew command-not-found-init)"; fi
 
+eval "$(direnv hook zsh)"
+
 #### EndImports
 
 #### VariousSettings
 
 if [ "$(uname 2> /dev/null)"="Darwin" ]; then
-  ulimit -n 65536 65536
+  #ulimit -n 65536 65536
 fi
 
 #### ENDVariousSettings
@@ -89,6 +95,10 @@ export UPDATE_ZSH_DAYS=7
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+
+TOUCHBAR_GIT_ENABLED=true
+
 #### ENDCONFIG
 
 source $HOME/antigen.zsh
@@ -107,6 +117,7 @@ antigen bundles <<EOBUNDLES
   screen
   sudo
   django
+  golang
   postgres
   rsync
   python
@@ -116,8 +127,8 @@ antigen bundles <<EOBUNDLES
   gulp
   npm
   node
+  ng
   bower
-  dotenv
   zsh-users/zsh-completions
   zsh-users/zsh-autosuggestions
   zsh-users/zsh-syntax-highlighting
@@ -149,3 +160,14 @@ if [ -f /Users/vosi/.tnsrc ]; then
     source /Users/vosi/.tnsrc 
 fi
 ###-tns-completion-end-###
+
+###-zsh-completion-start-###
+if [ -f /usr/local/share/zsh/site-functions ]; then
+    source /usr/local/share/zsh/site-functions
+fi
+###-zshs-completion-end-###
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# added by travis gem
+[ -f /Users/vosi/.travis/travis.sh ] && source /Users/vosi/.travis/travis.sh
