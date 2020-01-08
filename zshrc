@@ -167,6 +167,14 @@ if [ -f /usr/local/share/zsh/site-functions ]; then
 fi
 ###-zshs-completion-end-###
 
+# gcloud
+if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc ]; then
+    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+fi
+if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]; then
+    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # added by travis gem
