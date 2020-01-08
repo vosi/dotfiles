@@ -186,7 +186,7 @@ brew "rsync"
 brew "rustup-init"
 # SMART hard drive monitoring
 brew "smartmontools"
-# netcat on steroids
+# SOcket CAT: netcat on steroids
 brew "socat"
 # Experimental implementation of SPDY protocol versions 2, 3, and 3.1
 brew "spdylay"
@@ -215,6 +215,7 @@ brew "jesseduffield/lazydocker/lazydocker"
 cask "dotnet-sdk"
 cask "font-fira-code"
 cask "font-source-code-pro"
+cask "google-cloud-sdk"
 cask "julia"
 cask "keepingyouawake"
 cask "ngrok"
