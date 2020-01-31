@@ -158,10 +158,6 @@ brew "nmap"
 brew "node"
 # Platform built on V8 to build network applications
 brew "node@10"
-# Platform built on V8 to build network applications
-brew "node@6"
-# Platform built on V8 to build network applications
-brew "node@8"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # General-purpose scripting language

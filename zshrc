@@ -30,7 +30,7 @@ if [ "$(uname 2> /dev/null)"="Darwin" ]; then
   export PATH="/usr/local/opt/python@2/bin:$PATH"
   export PATH="/usr/local/opt/postgresql/bin:$PATH"
   export PATH="/usr/local/opt/mysql/bin:$PATH"
-  export PATH="/usr/local/opt/node@8/bin:$PATH"
+  export PATH="/usr/local/opt/node@12/bin:$PATH"
   export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 fi
 
@@ -121,6 +121,8 @@ antigen bundles <<EOBUNDLES
   postgres
   rsync
   python
+  pyenv
+  pipenv
   docker
   docker-compose
   virtualenvwrapper
